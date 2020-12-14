@@ -16,8 +16,8 @@ class _AuthScreenState extends State<AuthScreen> {
 
   Future<void> _submitAuthForm(
     String email, 
-    String password, 
     String username, 
+    String password, 
     bool isLogin,
     BuildContext ctx
   ) async {
@@ -54,9 +54,9 @@ class _AuthScreenState extends State<AuthScreen> {
     } catch (err) {
       print(err);
     } finally {
-      setState(() {
-        _isLoading = false;
-      });
+      // setState(() {
+      //   _isLoading = false;
+      // });
     }
   }
 
