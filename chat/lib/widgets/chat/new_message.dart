@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -11,13 +12,17 @@ class _NewMessageState extends State<NewMessage> {
   final _controller = new TextEditingController();
   var _enteredMessage = '';
 
-  void _sendMessage() {
+  void _sendMessage() async {
     FocusScope.of(context).unfocus();
-
+    final user = await FirebaseAuth.instance.currentUser();
+    final userData = await Firestore.instance.collection('users').document(user.uid).get();
+    
     Firestore.instance.collection('chat').add({
       'text': _enteredMessage,
       'createdAt': Timestamp.now(),
-      // 'userId': Fire
+      'userId': user.uid,
+      'username': userData['username'],
+      'userImage': userData['image_url']
     });
     _controller.clear();
   }
