@@ -23,6 +23,9 @@
 		},
 		{
 			"path": "chat"
+		},
+		{
+			"path": "native_code"
 		}
 	]
 }
