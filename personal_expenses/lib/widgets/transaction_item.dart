@@ -53,7 +53,7 @@ class _TransactionItemState extends State<TransactionItem> {
           widget.transaction.title,
           style: Theme.of(context).textTheme.title,
         ),
-        subtitle: Text(DateFormat.yMMMd().format(widget.transaction.date)),
+        subtitle: Text(DateFormat('dd-mm-yyyy').format(widget.transaction.date)),
         trailing: MediaQuery.of(context).size.width > 460
             ? FlatButton.icon(
                 textColor: Theme.of(context).errorColor,
